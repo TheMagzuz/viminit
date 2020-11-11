@@ -12,4 +12,4 @@ if [ -f $newVimFile ]; then
   done
 fi
 mv init.vim $newVimFile
-wget https://raw.githubusercontent.com/TheMagzuz/viminit/main/init.vim
+wget https://raw.githubusercontent.com/TheMagzuz/viminit/main/init.vim -O init.vim
