@@ -42,7 +42,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 
 let g:fzfCommand = 'git --git-dir=./.git ls-files -oc --exclude-standard'
 
-let g:Tex_CompileRule_pdf = 'arara $*'
+let g:Tex_CompileRule_pdf = 'latexCompile $*'
 let g:Tex_DefaultTargetFormat = 'pdf'
 
 set encoding=UTF-8
@@ -271,12 +271,18 @@ inoremap <leader>oe ø
 inoremap <leader>aa å
 
 " Spell check
-nnoremap <silent> <leader>sda :<C-u>set spell spelllang=da
-nnoremap <silent> <leader>sus :<C-u>set spell spelllang=en_US
-nnoremap <silent> <leader>sdi :<C-u>set nospell
+nnoremap <silent> <leader>sda :<C-u>set spell spelllang=da<CR>
+nnoremap <silent> <leader>sus :<C-u>set spell spelllang=en_US<CR>
+nnoremap <silent> <leader>sdi :<C-u>set nospell<CR>
 
 " Insert line above
 inoremap <leader><CR> <CR><ESC>ki
 
 " Format file
 noremap <C-K><C-D> gg=G<C-o>
+
+aug customtex
+  au!
+  autocmd FileType tex call Tex_MakeMap("<Leader>ll", ":w <CR> <Plug>Tex_Compile", 'n', 'buffer>')
+  au FileType tex call Tex_MakeMap("<Leader>ll", "<ESC>:w<CR> <Plug>Text_Compile", 'v', '<buffer>')
+aug END
