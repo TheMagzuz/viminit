@@ -295,7 +295,7 @@ nnoremap <silent> <leader>sdi :<C-u>set nospell<CR>
 inoremap <leader><CR> <ESC>ko
 
 " Insert and goto line below
-inoremap <leader>o <ESC>o
+inoremap <leader>j <ESC>o
 
 " Format file
 noremap <C-K><C-D> gg=G<C-o>
