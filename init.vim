@@ -25,9 +25,16 @@ Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'vim-airline/vim-airline'
 Plug 'mhinz/vim-startify'
 
+" C# Autocompletion
+"Plug 'OmniSharp/omnisharp-vim'
+Plug 'sheerun/vim-polyglot'
+
+
 Plug 'chrisbra/unicode.vim' 
 " Initialize plugin system
 call plug#end()
+
+filetype indent plugin on
 
 let mapleader = ',' 
 
@@ -42,6 +49,14 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 
 let g:fzfCommand = 'git --git-dir=./.git ls-files -oc --exclude-standard'
 
+let g:OmniSharp_translate_cygwin_wsl = 1
+
+let g:OmniSharp_popup_position = 'peek'
+if has('nvim')
+  let g:OmniSharp_popup_options = {
+  \ 'winhl': 'Normal:NormalFloat'
+  \}
+endif
 let g:Tex_CompileRule_pdf = 'latexCompile $*'
 let g:Tex_DefaultTargetFormat = 'pdf'
 
@@ -130,6 +145,7 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json', 
+  \ 'coc-omnisharp',
   \ ]
 " from readme
 " if hidden is not set, TextEdit might fail.
@@ -276,10 +292,15 @@ nnoremap <silent> <leader>sus :<C-u>set spell spelllang=en_US<CR>
 nnoremap <silent> <leader>sdi :<C-u>set nospell<CR>
 
 " Insert line above
-inoremap <leader><CR> <CR><ESC>ki
+inoremap <leader><CR> <ESC>ko
 
 " Format file
 noremap <C-K><C-D> gg=G<C-o>
+
+aug plaintexfiletype
+  au!
+  au FileType plaintex set filetype=tex
+aug END
 
 aug customtex
   au!
