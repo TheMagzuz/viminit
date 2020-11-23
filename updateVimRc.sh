@@ -2,6 +2,16 @@
 cd ~/.config/nvim
 newVimFile="init.vim.old-$(date +%y-%m-%d)"
 
+wget https://raw.githubusercontent.com/TheMagzuz/viminit/main/init.vim -O /tmp/init.vim
+
+changed=0
+
+cmp /tmp/init.vim ~/.config/nvim/init.vim --silent || changed=1
+
+if [ $changed -eq 0 ]; then
+  exit
+fi
+
 if [ -f $newVimFile ]; then
   i=0
   baseVimFile=$newVimFile.
@@ -11,5 +21,7 @@ if [ -f $newVimFile ]; then
     newVimFile=$baseVimFile$i
   done
 fi
-mv init.vim $newVimFile
-wget https://raw.githubusercontent.com/TheMagzuz/viminit/main/init.vim -O init.vim
+if [ -f ~/.config/nvim/init.vim ]; then
+  mv ~/.config/nvim/init.vim $newVimFile
+fi
+mv /tmp/init.vim ~/.config/nvim/init.vim
