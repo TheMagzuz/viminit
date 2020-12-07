@@ -34,7 +34,7 @@ call plug#end()
 let mapleader = ',' 
 
 let g:python3_host_prog = '/usr/bin/python3'
-let g:startify_bookmarks = [ {'v': '~/.config/nvim/init.vim'}, { 'b': '~/.bashrc' } ]
+let g:startify_bookmarks = [ {'v': '~/.config/nvim/init.vim'}, { 'b': '~/.zshrc' } ]
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -300,3 +300,7 @@ aug customtex
   autocmd FileType tex call Tex_MakeMap("<Leader>ll", ":w <CR> <Plug>Tex_Compile", 'n', 'buffer>')
   au FileType tex call Tex_MakeMap("<Leader>ll", "<ESC>:w<CR> <Plug>Text_Compile", 'v', '<buffer>')
 aug END
+
+" Ignore spellcheck in certain latex enviroments
+"sy match texParencite "\\parencite{[^}]\{-}}"hs=s+11,he=e-1 containedin=texstatement contains=@NoSpell
+let g:tex_special_arg_commands = "parencite"
