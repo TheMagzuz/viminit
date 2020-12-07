@@ -46,6 +46,7 @@ let g:fzfCommand = 'git --git-dir=./.git ls-files -oc --exclude-standard'
 
 let g:Tex_CompileRule_pdf = 'latexCompile $*'
 let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_ViewRule_pdf='sumatra'
 
 set encoding=UTF-8
 set rnu nu
@@ -58,6 +59,8 @@ nmap ++ <plug>NERDCommenterToggle
 " open NERDTree automatically
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * NERDTree
+
+set shellcmdflag=-ic
 
 let g:NERDTreeGitStatusWithFlags = 1
 "let g:WebDevIconsUnicodeDecorateFolderNodes = 1
