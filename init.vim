@@ -34,7 +34,7 @@ call plug#end()
 let mapleader = ',' 
 
 let g:python3_host_prog = '/usr/bin/python3'
-let g:startify_bookmarks = [ {'v': '~/.config/nvim/init.vim'}, { 'b': '~/.zshrc' } ]
+let g:startify_bookmarks = [ {'v': '~/.config/nvim/init.vim'}, { 'b': '~/.zshrc' }, {'p': '~/texmf/tex/latex/preamble/preamble.sty'} ]
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
