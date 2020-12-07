@@ -288,7 +288,7 @@ inoremap <leader><CR> <ESC>ko
 inoremap <leader>j <ESC>o
 
 " Format file
-noremap <C-K><C-D> gg=G<C-o>
+noremap <leader>d gg=G<C-o>
 
 aug plaintexfiletype
   au!
