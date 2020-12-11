@@ -297,8 +297,7 @@ aug END
 
 aug customtex
   au!
-  autocmd FileType tex call Tex_MakeMap("<Leader>ll", ":w <CR> <Plug>Tex_Compile", 'n', 'buffer>')
-  au FileType tex call Tex_MakeMap("<Leader>ll", "<ESC>:w<CR> <Plug>Text_Compile", 'v', '<buffer>')
+  au FileType tex call Tex_MakeMap("<Leader>ll", ":w <CR> <Plug>Tex_Compile", 'n', '<buffer>')
   au FileType tex call IMAP("EST","\\begin{figure}[<+htpb+>]\<CR>\\centering\<CR>\\includestandalone{<+file+>}\<CR>\\caption{<+caption text+>}\<CR>\\label{fig:<+label+>}\<CR>\\end{figure}", "tex")
 aug END
 
