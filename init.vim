@@ -205,6 +205,9 @@ nmap <F2> <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
+" Close a help floating window.
+nmap <silent> <c-[> <esc>:noh<cr><Plug>(coc-float-hide)
+
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -227,10 +230,6 @@ xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
-
-" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
