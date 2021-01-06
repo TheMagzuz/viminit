@@ -281,7 +281,7 @@ nnoremap <silent> <leader>sus :<C-u>set spell spelllang=en_US<CR>
 nnoremap <silent> <leader>sdi :<C-u>set nospell<CR>
 
 " Insert line above
-inoremap <leader><CR> <ESC>ko
+inoremap <leader><CR> <ESC>O
 
 " Insert and goto line below
 inoremap <leader>d <ESC>o
