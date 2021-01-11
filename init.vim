@@ -12,7 +12,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'vim-latex/vim-latex'
+Plug 'lervag/vimtex'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
@@ -32,6 +32,7 @@ Plug 'chrisbra/unicode.vim'
 call plug#end()
 
 let mapleader = ',' 
+let maplocalleader = ','
 
 let g:python3_host_prog = '/usr/bin/python3'
 let g:startify_bookmarks = [ {'v': '~/.config/nvim/init.vim'}, { 'b': '~/.zshrc' }, {'p': '~/texmf/tex/latex/preamble/preamble.sty'} ]
@@ -44,9 +45,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 
 let g:fzfCommand = 'git --git-dir=./.git ls-files -oc --exclude-standard'
 
-let g:Tex_CompileRule_pdf = 'latexCompile $*'
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_ViewRule_pdf='sumatra'
+let g:vimtex_view_general_viewer = 'sumatra'
 
 set encoding=UTF-8
 set rnu nu
@@ -294,13 +293,6 @@ aug plaintexfiletype
   au FileType plaintex set filetype=tex
 aug END
 
-aug customtex
-  au!
-  au FileType tex call Tex_MakeMap("<Leader>ll", ":w <CR> <Plug>Tex_Compile", 'n', '<buffer>')
-  au FileType tex call IMAP("EST","\\begin{figure}[<+htpb+>]\<CR>\\centering\<CR>\\includestandalone{<+file+>}\<CR>\\caption{<+caption text+>}\<CR>\\label{fig:<+label+>}\<CR>\\end{figure}", "tex")
-  au FileType tex call IMAP("FMB", "\\mathbf{<++>}<++>", "tex")
-aug END
 
 " Ignore spellcheck in certain latex enviroments
-"sy match texParencite "\\parencite{[^}]\{-}}"hs=s+11,he=e-1 containedin=texstatement contains=@NoSpell
-let g:tex_special_arg_commands = "parencite"
+sy match texParencite "\\parencite{[^}]\{-}}"hs=s+11,he=e-1 containedin=texstatement contains=@NoSpell
